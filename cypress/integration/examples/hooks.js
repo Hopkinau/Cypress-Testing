@@ -25,6 +25,12 @@ describe('Hooks Suite', function () {
     );
     cy.get("form input[name='name']").should('have.attr', 'minlength', '2');
     cy.get('#inlineRadio3').should('be.disabled');
+    cy.get(':nth-child(2) > .nav-link').click();
+
+    this.data.productName.forEach((x) => {
+      cy.selectProduct(x);
+    });
+    //loop example.json data and use custom command to test the product
 
     // beforeEach(() => {
     //   // root-level hook
