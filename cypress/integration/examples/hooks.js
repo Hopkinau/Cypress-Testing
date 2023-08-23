@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import 'cypress-iframe';
-
+import HomePage from '../pageObjects/HomePage';
+import ProductPage from '../pageObjects/ProductPage';
 describe('Hooks Suite', function () {
   before(() => {
     // root-level hook
@@ -13,23 +14,30 @@ describe('Hooks Suite', function () {
   });
 
   it('Hooks case', function () {
+    // Cypress.config('defaultCommandTimeout', 8000);
     cy.visit('https://rahulshettyacademy.com/angularpractice/');
+    const homePage = new HomePage();
 
-    cy.get("form input[name='name']").type(this.data.name);
+    homePage.getEditBox().type(this.data.name);
 
-    cy.get('select').select(this.data.gender);
+    homePage.getGender().select(this.data.gender);
 
-    cy.get(':nth-child(4) > .ng-untouched').should(
-      'have.value',
-      this.data.name
-    );
-    cy.get("form input[name='name']").should('have.attr', 'minlength', '2');
-    cy.get('#inlineRadio3').should('be.disabled');
-    cy.get(':nth-child(2) > .nav-link').click();
+    homePage.getTwoWayDataBinding().should('have.value', this.data.name);
+    homePage.getEditBox().should('have.attr', 'minlength', '2');
+    homePage.getEntrepreneur().should('be.disabled');
+    homePage.getShopTab().click();
 
     this.data.productName.forEach((x) => {
       cy.selectProduct(x);
     });
+
+    const productPage = new ProductPage();
+    productPage.checkOutButton().click();
+    cy.contains('Checkout').click();
+    cy.get('#country').type('India');
+    cy.get('.suggestions > ul > li > a').click();
+    // cy.get('#checkbox2').click({ force: true });
+
     //loop example.json data and use custom command to test the product
 
     // beforeEach(() => {
