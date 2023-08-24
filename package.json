@@ -6,12 +6,15 @@
   "scripts": {
     "test": "node_modules\\.bin\\cypress run",
     "headTest": "npm run test -- --headed",
-    "chromeTest": "npm run test -- --browser chrome"
+    "chromeTest": "npm run test -- --browser chrome",
+    "recordDashBoardTest": "npm run test --record --key 59d3f472-710d-46a5-92d8-994863228e15 --reporter mochawesome",
+    "GreenKartTest": "npm run test --spec \"cypress/integration/GreenKart/*\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.17.4",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-iframe": "^1.0.1"
   }
 }
