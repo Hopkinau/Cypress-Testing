@@ -15,7 +15,8 @@ describe('Hooks Suite', function () {
 
   it('Hooks case', function () {
     // Cypress.config('defaultCommandTimeout', 8000);
-    cy.visit('https://rahulshettyacademy.com/angularpractice/');
+    Cypress.env('URL');
+    cy.visit(Cypress.env('URL') + '/angularpractice/');
     const homePage = new HomePage();
 
     homePage.getEditBox().type(this.data.name);

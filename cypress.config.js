@@ -1,6 +1,10 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
+  projectId: '95u6qa',
+  env: {
+    URL: 'https://rahulshettyacademy.com',
+  },
   defaultCommandTimeout: 6000,
   e2e: {
     setupNodeEvents(on, config) {
