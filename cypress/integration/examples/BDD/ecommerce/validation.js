@@ -9,6 +9,7 @@ import HomePage from '../../../pageObjects/HomePage';
 import ProductPage from '../../../pageObjects/ProductPage';
 const homePage = new HomePage();
 const productPage = new ProductPage();
+let name;
 
 Given('I Open Ecommerce Page', () => {
   cy.visit(Cypress.env('URL') + '/angularpractice/');
@@ -59,21 +60,26 @@ Then('Select the country submit and verify Thank you', () => {
     expect(actualText.includes('Success')).to.be.true;
   });
 });
-//When I fill the form details
-// When('I fill the form details', function (dataTable) {
-//   // [bobz , male   ]
-//   name = dataTable.rawTable[1][0];
-//   homePage.getEditBox().type(dataTable.rawTable[1][0]);
-//   homePage.getGender().select(dataTable.rawTable[1][1]);
-// });
-// Then validate the forms behaviour
-// Then('validate the forms behaviour', function () {
-//   homePage.getTwoWayDataBinding().should('have.value', name);
-//   homePage.getEditBox().should('have.attr', 'minlength', '2');
-//   homePage.getEntrepreneaur().should('be.disabled');
-//   Cypress.config('defaultCommandTimeout', 8000);
-// });
-// // And select the Shop Page
-// Then('select the Shop Page', () => {
-//   homePage.getShopTab().click();
-// });
+
+// Given I Open Ecommerce Page
+// When I fill the form details
+When('I fill the form details', function (dataTable) {
+  //[bobz,male] =dataTable.rawtable[1]
+  name = dataTable.rawTable[1][0];
+  homePage.getEditBox().type(dataTable.rawTable[1][0]);
+
+  homePage.getGender().select(dataTable.rawTable[1][1]);
+});
+
+// Then validate the forms behavior
+Then('validate the forms behavior', (dataTable) => {
+  homePage.getTwoWayDataBinding().should('have.value', name);
+  homePage.getEditBox().should('have.attr', 'minlength', '2');
+  homePage.getEntrepreneur().should('be.disabled');
+  Cypress.config('defaultCommandTimeout', 8000);
+});
+
+// And select the Shop Page
+Then('select the Shop Page', () => {
+  homePage.getShopTab().click();
+});

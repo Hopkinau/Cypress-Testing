@@ -17,5 +17,14 @@
     "@cucumber/cucumber": "^9.4.0",
     "@cypress/browserify-preprocessor": "latest",
     "cypress": "^12.17.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "outputFolder": "cypress/cucumberReports/result.json"
+    }
+  },
+  "dependencies": {
+    "install": "^0.13.0"
   }
 }
