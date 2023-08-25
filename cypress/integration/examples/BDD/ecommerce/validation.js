@@ -72,7 +72,7 @@ When('I fill the form details', function (dataTable) {
 });
 
 // Then validate the forms behavior
-Then('validate the forms behavior', (dataTable) => {
+Then('validate the forms behavior', function (dataTable) {
   homePage.getTwoWayDataBinding().should('have.value', name);
   homePage.getEditBox().should('have.attr', 'minlength', '2');
   homePage.getEntrepreneur().should('be.disabled');
