@@ -13,8 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.17.4",
-    "cypress-cucumber-preprocessor": "^4.3.1",
-    "cypress-iframe": "^1.0.1"
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.4",
+    "@cucumber/cucumber": "^9.4.0",
+    "@cypress/browserify-preprocessor": "latest",
+    "cypress": "^12.17.4"
   }
 }
