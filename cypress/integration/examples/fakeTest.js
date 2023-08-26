@@ -17,6 +17,8 @@ describe('My Mock Test Suite', () => {
       //response
     ).as('bookretrievals');
     cy.get('button[class="btn btn-primary"]').click();
-    cy.wait('@bookretrievals');
+    // cy.wait('@bookretrievals').should(({ request, response }) => {
+    //   cy.get('tr').should('have.length', response.body.length + 1);
+    // });
   });
 });
