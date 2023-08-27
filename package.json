@@ -25,6 +25,7 @@
     }
   },
   "dependencies": {
-    "install": "^0.13.0"
+    "install": "^0.13.0",
+    "neat-csv": "^7.0.0"
   }
 }
